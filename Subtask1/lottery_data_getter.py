@@ -43,13 +43,11 @@ def webparser():
         soup = BeautifulSoup(driver.page_source, 'lxml')
         page_data = pageparser(i - ord('0'), soup)
         all_data.extend(page_data)
-        print(f"第{i - ord('0')}页爬取完成，获取{len(page_data)}条数据")
 
     driver.quit()
 
     df = pd.DataFrame(all_data)
-    df.to_csv('lottery_data.csv', index=False, encoding='utf-8-sig')
-    print(f"数据已保存至lottery_data.csv，共{len(df)}条记录")
+    df.to_csv('../lottery_data.csv', index=False, encoding='utf-8-sig')
 
 def pageparser(page_num, soup):
     data = []
@@ -84,7 +82,6 @@ def pageparser(page_num, soup):
             if span.text.strip():
                 num = int(span.text.strip())
                 back_numbers.append(num)
-
 
         front_numbers.sort()
         back_numbers.sort()

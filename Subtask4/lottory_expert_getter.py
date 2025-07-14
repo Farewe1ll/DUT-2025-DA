@@ -196,7 +196,7 @@ def expertparser(soup):
 		"大乐透中奖情况": dlt_data
 	})
 
-def export_to_csv(data, filename='expert_data.csv'):
+def export_to_csv(data, filename='../expert_data.csv'):
 	processed_data = []
 
 	for item in data:
